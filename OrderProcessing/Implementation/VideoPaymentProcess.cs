@@ -7,9 +7,28 @@ namespace OrderProcessing.Implementation
 {
     public class VideoPaymentProcess : IPaymentProcess
     {
-        public void ProcessPayment(int orderId)
+        private string _video;
+        public string video
+        { 
+            get 
+            {
+                return _video;
+            }
+            set
+            {
+                _video = value;
+            }
+        }
+        public string ProcessPayment()
         {
-            throw new NotImplementedException();
+            string message = "";
+            if (_video == "LearningToSki"){
+                message = "Add a free video";
+                PackingSlip packingSlip = new PackingSlip();
+                var packing = packingSlip.CreatePackingSlip(Enum.EnumPackingSlip.VideoPacking);
+                packing.Packing(message);
+            }
+            return message;
         }
     }
 }

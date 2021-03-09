@@ -7,9 +7,13 @@ namespace OrderProcessing.Implementation
 {
     public class UpgradeMemberShipPaymentProcess : IPaymentProcess
     {
-        public void ProcessPayment(int orderId)
+        public string ProcessPayment()
         {
-            throw new NotImplementedException();
+            string message = "UpgradeMembership";
+            PackingSlip packingSlip = new PackingSlip();
+            var packing = packingSlip.CreatePackingSlip(Enum.EnumPackingSlip.UpgradeMembership);
+            packing.Packing(message);
+            return message;
         }
     }
 }

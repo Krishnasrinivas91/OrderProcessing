@@ -7,6 +7,6 @@ namespace OrderProcessing.Inerfaces
 {
     public interface IPaymentProcess
     {
-        void ProcessPayment(int orderId);
+        string ProcessPayment();
     }
 }

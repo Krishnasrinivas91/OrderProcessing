@@ -1,4 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using OrderProcessing.Implementation;
+using OrderProcessing.Inerfaces;
 
 namespace OrderProcessing.Test
 {
@@ -8,28 +11,30 @@ namespace OrderProcessing.Test
         [TestMethod]
         public void CompleteBookPayment()
         {
-
+            var mock = new Mock<IPaymentProcess>();
+            mock.Setup(p => p.ProcessPayment()).Returns("DuplicateSlipForRoyaltyDepartment");
+            BookPaymentProcess bookPaymentProcess = new BookPaymentProcess();
+            var result = bookPaymentProcess.ProcessPayment();
+            Assert.AreEqual("DuplicateSlipForRoyaltyDepartment", result);
         }
 
         [TestMethod]
         public void CompleteMembershipPayment()
         {
-
+            var mock = new Mock<IPaymentProcess>();
+            mock.Setup(p => p.ProcessPayment()).Returns("ActivateMembership");
+            MemberShipPaymentProcess bookPaymentProcess = new MemberShipPaymentProcess();
+            var result = bookPaymentProcess.ProcessPayment();
+            Assert.AreEqual("ActivateMembership", result);
         }
         [TestMethod]
         public void CompletePhysicalProductPayment()
         {
-
-        }
-        [TestMethod]
-        public void CompleteProcessTypePayment()
-        {
-
-        }
-        [TestMethod]
-        public void CompleteUpgradeMembershipPayment()
-        {
-
+            var mock = new Mock<IPaymentProcess>();
+            mock.Setup(p => p.ProcessPayment()).Returns("GeneratePackingSlip");
+            PhysicalProductPaymentProcess bookPaymentProcess = new PhysicalProductPaymentProcess();
+            var result = bookPaymentProcess.ProcessPayment();
+            Assert.AreEqual("GeneratePackingSlip", result);
         }
     }
 }

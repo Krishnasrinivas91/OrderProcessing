@@ -8,19 +8,19 @@ namespace OrderProcessing.Implementation
 {
     public class ProcessType : IProcessType
     {
-        public IPaymentProcess GetProcessType(EnumProcessType enumProcessType)
+        public IPaymentProcess GetProcessType(int processType)
         {
-            switch (enumProcessType)
+            switch (processType)
             {
-                case EnumProcessType.PhysicalProduct:
+                case (int)EnumProcessType.PhysicalProduct:
                     return new PhysicalProductPaymentProcess();
-                case EnumProcessType.Book:
+                case (int)EnumProcessType.Book:
                     return new BookPaymentProcess();
-                case EnumProcessType.MemberShip:
+                case (int)EnumProcessType.MemberShip:
                     return new MemberShipPaymentProcess();
-                case EnumProcessType.UpgradeMemberShip:
+                case (int)EnumProcessType.UpgradeMemberShip:
                     return new UpgradeMemberShipPaymentProcess();
-                case EnumProcessType.Video:
+                case (int)EnumProcessType.Video:
                     return new VideoPaymentProcess();
                 default:
                     return null;

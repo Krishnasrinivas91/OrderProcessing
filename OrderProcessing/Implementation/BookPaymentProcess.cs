@@ -7,9 +7,13 @@ namespace OrderProcessing.Implementation
 {
     public class BookPaymentProcess : IPaymentProcess
     {
-        public void ProcessPayment(int orderId)
+        public string ProcessPayment()
         {
-            throw new NotImplementedException();
+            string message = "DuplicateSlipForRoyaltyDepartment";
+            PackingSlip packingSlip = new PackingSlip();
+            var packing = packingSlip.CreatePackingSlip(Enum.EnumPackingSlip.RoyaltyDepartmentPacking);
+            packing.Packing(message);
+            return message;
         }
     }
 }

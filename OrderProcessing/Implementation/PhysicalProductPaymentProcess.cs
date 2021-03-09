@@ -7,9 +7,13 @@ namespace OrderProcessing.Implementation
 {
     public class PhysicalProductPaymentProcess : IPaymentProcess
     {
-        public void ProcessPayment(int orderId)
+        public string ProcessPayment()
         {
-
+            string message = "GeneratePackingSlip";
+            PackingSlip packingSlip = new PackingSlip();
+            var packing = packingSlip.CreatePackingSlip(Enum.EnumPackingSlip.ShippingPack);
+            packing.Packing(message);
+            return message;
         }
     }
 }

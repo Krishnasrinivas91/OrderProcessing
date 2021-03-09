@@ -7,6 +7,6 @@ namespace OrderProcessing.Inerfaces
 {
     public interface IProcessType
     {
-        IPaymentProcess GetProcessType(EnumProcessType enumProcessType);
+        IPaymentProcess GetProcessType(int processType);
     }
 }
